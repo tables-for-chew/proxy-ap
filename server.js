@@ -1,6 +1,6 @@
 require('newrelic');
 const express = require('express');
-// const morgan = require('morgan');
+const morgan = require('morgan');
 const path = require('path');
 const proxy = require('http-proxy-middleware')
 // const compression = require('compression')
@@ -8,13 +8,13 @@ const app = express();
 
 const PORT = process.env.PORT || 8008;
 
-// app.use(morgan('dev'));
+app.use(morgan('dev'));
 
 // app.use(compression());
 // app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/menu', proxy({
-  target: 'http://localhost:3031/bundle.js'
+app.use('/api/:restaurantId/menu', proxy({
+  target: 'http://ec2-18-223-135-231.us-east-2.compute.amazonaws.com'
 }));
 
 // app.use('/api/photos', proxy({
