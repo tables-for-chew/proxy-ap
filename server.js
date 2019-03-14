@@ -14,7 +14,11 @@ app.use(morgan('dev'));
 // app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/menu/bundle', proxy({
-  target: 'http://ec2-18-223-135-231.us-east-2.compute.amazonaws.com/'
+  target: 'http://localhost:3031/'
+}));
+
+app.use('/api/:restaurantId/menu', proxy({
+  target: 'http://localhost:3031/'
 }));
 
 // app.use('/api/photos', proxy({
