@@ -13,8 +13,8 @@ app.use(morgan('dev'));
 // app.use(compression());
 // app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api/:restaurantId/menu', proxy({
-  target: 'http://ec2-18-223-135-231.us-east-2.compute.amazonaws.com'
+app.use('/api/menu/bundle', proxy({
+  target: 'http://ec2-18-223-135-231.us-east-2.compute.amazonaws.com/'
 }));
 
 // app.use('/api/photos', proxy({
